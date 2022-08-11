@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { action, makeAutoObservable, makeObservable, observable, runInAction} from "mobx";
+import { makeAutoObservable, runInAction} from "mobx";
 import agent from "../api/agent";
 import { Activity, ActivityFormValues } from "../models/activity";
 import { Profile } from "../models/profile";
@@ -176,6 +176,10 @@ export default class ActivityStore {
         } finally {
             runInAction(() => this.loading = false);
         }
+    }
+
+    clearSelectedActivity = () => {
+        this.selectedActivity = undefined;
     }
 
 }
